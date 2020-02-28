@@ -14,10 +14,23 @@
   	<description>HelloWeb</description>
   	<display-name>HelloWeb</display-name>
   	<servlet-name>HelloWeb</servlet-name>
-  	<servlet-class>com.lamp.web.HelloWeb</servlet-class>
+  	<servlet-class>com.lamp.web.servlet.HelloWeb</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>HelloWeb</servlet-name>
   	<url-pattern>/HelloWeb</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<description>LoginServlet</description>
+  	<display-name>LoginServlet</display-name>
+  	<servlet-name>LoginServlet</servlet-name>
+  	<servlet-class>com.lamp.web.servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>LoginServlet</servlet-name>
+  	<url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  
+  
 </web-app>

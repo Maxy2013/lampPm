@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>INDEC3.jsp发财</h2>
+	<h1 align="center" style="color: red;">Error</h1>
 </body>
 </html>

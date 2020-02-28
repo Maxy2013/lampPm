@@ -1,4 +1,4 @@
-package com.lamp.web;
+package com.lamp.web.servlet;
 
 import java.io.IOException;
 
