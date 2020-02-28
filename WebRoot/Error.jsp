@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Error</title>
 </head>
 <body>
-	<h1 align="center" style="color: red;">Error</h1>
+	<h1 align="center" style="color: red;" onclick="tips()">Error</h1>
 </body>
 </html>
