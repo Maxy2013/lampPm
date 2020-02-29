@@ -21,12 +21,13 @@ public class StreetLightDao {
 	public static List<Streetlight> queryStreetLight(){
 		Connection connection = JdbcConnector.getConnection();
 	    String sql="select * from streetlight_info";
-	    Streetlight streetlight = new Streetlight();
+	   
 	    List<Streetlight> list = new ArrayList<Streetlight>();
 	    try {
 			PreparedStatement prepareStatement = connection.prepareStatement(sql);
 			ResultSet resultSet = prepareStatement.executeQuery(sql);
 			while(resultSet.next()) {
+				Streetlight streetlight = new Streetlight();
 				streetlight.setId(resultSet.getInt("id"));
 				streetlight.setLampshade(resultSet.getString("lampshade"));
 				streetlight.setLampWick(resultSet.getString("lamp_wick"));

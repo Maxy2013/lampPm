@@ -27,7 +27,7 @@ public class QueryCompanyWithCompanyUnicodeServlet extends HttpServlet{
 		out.write(jsonString);
 		out.flush();
 		out.close();	
-		super.doGet(req, resp);
+		
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
