@@ -20,7 +20,7 @@ public class QueryCompanyWithCompanyUnicodeServlet extends HttpServlet{
 		
 		
 		resp.setCharacterEncoding("UTF-8");
-		resp.setContentType("test/json;charset=UTF-8");
+		resp.setContentType("text/json;charset=UTF-8");
 		
 		String jsonString = JSON.toJSONString(dataList);
 		PrintWriter out = resp.getWriter();

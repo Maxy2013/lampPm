@@ -17,13 +17,13 @@ function queryRoads(obj){
 			$.each(data, function(i){
 				var item = data[i];
 				var row = "<tr class = 'data-tbody'><td>"+(i+1)+"</td>" +
-						"<td style='width: 100px;'>"+item.name+"</td>" +
-						"<td style='width: 100px;'>"+item.legth+"</td>" +
+						"<td style='width: 100px;'>"+item.roadSection+"</td>" +
 						"<td style='width: 100px;'>"+item.area+"</td>" +
-						"<td style='width: 100px;'>"+item.lampNum+"</td>" +
-						"<td style='width: 100px;'>"+item.status+"</td>"+
-						"<td style='width: 100px;'>未知</td>"+
-						"<td style='width: 100px;'>未知</td></tr>"
+						"<td style='width: 100px;'>"+item.length+"</td>" +
+						"<td style='width: 100px;'>"+item.needLightNumber+"</td>" +
+						"<td>"+item.installCompany+"</td>"+
+						"<td style='width: 100px;'>"+dateFormat(item.createdTime)+"</td>"+
+						"<td style='width: 100px;'>"+dateFormat(item.modifiedTime)+"</td></tr>"
 				content += row;
 			});
 			roadsBody.html(content);
@@ -144,7 +144,7 @@ function dateFormat(time) {
 	var M = date.getMinutes();
 	var S = date.getSeconds();
 	function Covering(num) {
-		return num > 10 ? num : '0' + num;
+		return num >= 10 ? num : '0' + num;
 	}
 	return y + '-' + Covering(m) + '-' + Covering(d);// + ' ' + Covering(H) + ':'+ Covering(M) + ':' + Covering(S)
 }

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.lamp.web.dao.CompanyDao;
 import com.lamp.web.entity.Company;
 
@@ -23,12 +24,10 @@ public class QueryCompanyServlet extends HttpServlet {
 
 		
 		List<Company> dataList = CompanyDao.queryCompany();
-		
-		
+		String jsonString = JSON.toJSONStringWithDateFormat(dataList,"yyyy-MM-dd HH:mm:ss",SerializerFeature.DisableCircularReferenceDetect);
+
 		resp.setCharacterEncoding("UTF-8");
-		resp.setContentType("test/json;charset=UTF-8");
-		
-		String jsonString = JSON.toJSONString(dataList);
+		resp.setContentType("text/json;charset=UTF-8");
 		PrintWriter out = resp.getWriter();
 		out.write(jsonString);
 		out.flush();

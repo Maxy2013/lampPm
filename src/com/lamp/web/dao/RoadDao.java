@@ -21,12 +21,13 @@ public class RoadDao {
 	public static List<Road> queryRoad(){
 		connection=JdbcConnector.getConnection();
 		String sql="select * from road_info";
-		Road road = new Road();
+		
 		List<Road> list = new ArrayList<Road>();
 		try {
 			PreparedStatement prepareStatement = connection.prepareStatement(sql);
 			ResultSet resultSet = prepareStatement.executeQuery(sql);
 			while(resultSet.next()) {
+				Road road = new Road();
 				road.setId(resultSet.getInt("id"));
 				road.setArea(resultSet.getString("area"));
 				road.setInstallCompany(resultSet.getString("install_company"));
