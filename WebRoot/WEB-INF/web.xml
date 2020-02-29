@@ -32,5 +32,27 @@
   	<url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<description>JsonServlet</description>
+  	<display-name>JsonServlet</display-name>
+  	<servlet-name>JsonServlet</servlet-name>
+  	<servlet-class>com.lamp.web.servlet.JsonServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>JsonServlet</servlet-name>
+  	<url-pattern>/JsonServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<description>RoadsServlet</description>
+  	<display-name>RoadsServlet</display-name>
+  	<servlet-name>RoadsServlet</servlet-name>
+  	<servlet-class>com.lamp.web.servlet.RoadsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>RoadsServlet</servlet-name>
+  	<url-pattern>/queryRoads</url-pattern>
+  </servlet-mapping>
+  
   
 </web-app>
