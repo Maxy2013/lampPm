@@ -123,3 +123,18 @@ function companyNameSearch(){
 		}
 	});
 }
+
+function lampNameAdd(){
+	$("#lamp-form").css('display', 'block');
+	$("#lamp-tbale").css('display', 'none');
+}
+
+function saveLamp(){
+	$("#lamp-tbale").css('display', 'inline-block');
+	$("#lamp-form").css('display', 'none');
+}
+
+function backLamp(){
+	$("#lamp-tbale").css('display', 'inline-block');
+	$("#lamp-form").css('display', 'none');
+}

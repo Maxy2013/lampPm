@@ -1,5 +1,5 @@
 $(function(){
-	$("#lamp,#roads,#material,#company").css('display', 'none');
+	$("#lamp,#roads,#material,#company,#lamp-form").css('display', 'none');
 });
 
 function queryRoads(obj){
@@ -16,7 +16,7 @@ function queryRoads(obj){
 			var content = "";
 			$.each(data, function(i){
 				var item = data[i];
-				var row = "<tr><td>"+(i+1)+"</td>" +
+				var row = "<tr class = 'data-tbody'><td>"+(i+1)+"</td>" +
 						"<td style='width: 100px;'>"+item.name+"</td>" +
 						"<td style='width: 100px;'>"+item.legth+"</td>" +
 						"<td style='width: 100px;'>"+item.area+"</td>" +
@@ -50,12 +50,13 @@ function queryLamp(obj){
 			var content = "";
 			$.each(data, function(i){
 				var item = data[i];
-				var row = "<tr><td style='width: 100px;'>"+item.lampWick+"</td>" +
+				var row = "<tr class = 'data-tbody'><td style='width: 100px;'>"+item.lampWick+"</td>" +
 						"<td style='width: 100px;'>"+item.lampshade+"</td>" +
 						"<td style='width: 100px;'>"+item.wire+"</td>" +
 						"<td style='width: 150px;'>"+item.supportingArm+"</td>" +
 						"<td style='width: 100px;'>"+item.screw+"</td>" +
-						"<td>"+timeFormat(item.createTime)+"</td></tr>"
+						"<td style='width: 100px;'>"+dateFormat(item.createdTime)+"</td>" +
+						"<td style='width: 100px;'>"+dateFormat(item.modifiedTime)+"</td></tr>"
 				content += row;
 			});
 			lampBody.html(content);
@@ -77,12 +78,13 @@ function queryMaterial(obj){
 			var content = "";
 			$.each(data, function(i){
 				var item = data[i];
-				var row = "<tr><td>"+item.materialNumber+"</td>" +
-						"<td>"+item.name+"</td>" +
+				var row = "<tr class = 'data-tbody'><td>"+item.materialNumber+"</td>" +
+						"<td style='width: 100px;'>"+item.name+"</td>" +
 						"<td>"+item.factory+"</td>" +
-						"<td>"+item.price+"</td>" +
-						"<td>"+item.unitOfMeasurement+"</td>" +
-						"<td>"+timeFormat(item.createdTime)+"</td></tr>"
+						"<td style='width: 80px;'>"+item.price+"</td>" +
+						"<td style='width: 80px;'>"+item.unitOfMeasurement+"</td>" +
+						"<td style='width: 120px;'>"+dateFormat(item.createdTime)+"</td>"+
+						"<td style='width: 120px;'>"+dateFormat(item.modifiedTime)+"</td></tr>"
 				content += row;
 			});
 			materialBody.html(content);
@@ -104,12 +106,12 @@ function queryCompany(obj){
 			var content = "";
 			$.each(data, function(i){
 				var item = data[i];
-				var row = "<tr><td>"+item.id+"</td>" +
-						"<td>"+item.companyUnicode+"</td>" +
+				var row = "<tr class = 'data-tbody'><td>"+item.id+"</td>" +
+						"<td style='width: 100px;'>"+item.companyUnicode+"</td>" +
 						"<td>"+item.companyName+"</td>" +
 						"<td>"+item.address+"</td>" +
-						"<td>"+timeFormat(item.createdTime)+"</td>" +
-						"<td>"+dateFormat(item.modifiedTime)+"</td></tr>"
+						"<td style='width: 100px;'>"+dateFormat(item.createdTime)+"</td>" +
+						"<td style='width: 100px;'>"+dateFormat(item.modifiedTime)+"</td></tr>"
 				content += row;
 			});
 			companyBody.html(content);

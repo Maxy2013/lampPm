@@ -28,7 +28,7 @@ public class StreetLightDao {
 			ResultSet resultSet = prepareStatement.executeQuery(sql);
 			while(resultSet.next()) {
 				streetlight.setId(resultSet.getInt("id"));
-				streetlight.setLampshade(resultSet.getString("lamp_shade"));
+				streetlight.setLampshade(resultSet.getString("lampshade"));
 				streetlight.setLampWick(resultSet.getString("lamp_wick"));
 				streetlight.setScrew(resultSet.getString("screw"));
 				streetlight.setSupportingArm(resultSet.getString("supporting_arm"));
