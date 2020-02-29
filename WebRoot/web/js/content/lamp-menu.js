@@ -2,7 +2,9 @@ $(function(){
 	$("#lamp,#roads,#material,#company").css('display', 'none');
 });
 
-function queryRoads(){
+function queryRoads(obj){
+	//切换菜单
+	switchMenu(obj);
 	var roads = $("#roads");
 	var roadsBody = $("#roads-tbody");
 	switchDisplay(roads);
@@ -19,7 +21,9 @@ function queryRoads(){
 						"<td style='width: 100px;'>"+item.legth+"</td>" +
 						"<td style='width: 100px;'>"+item.area+"</td>" +
 						"<td style='width: 100px;'>"+item.lampNum+"</td>" +
-						"<td style='width: 100px;'>"+item.status+"</td></tr>"
+						"<td style='width: 100px;'>"+item.status+"</td>"+
+						"<td style='width: 100px;'>未知</td>"+
+						"<td style='width: 100px;'>未知</td></tr>"
 				content += row;
 			});
 			roadsBody.html(content);
@@ -32,7 +36,9 @@ function switchDisplay(domId){
 	domId.css('display', 'block');
 }
 
-function queryLamp(){
+function queryLamp(obj){
+	//切换菜单
+	switchMenu(obj);
 	var lamp = $("#lamp");
 	var lampBody = $("#lamp-tbody");
 	switchDisplay(lamp);
@@ -44,7 +50,12 @@ function queryLamp(){
 			var content = "";
 			$.each(data, function(i){
 				var item = data[i];
-				var row = "<tr><td>"+item.lampWick+"</td><td>"+item.lampshade+"</td><td>"+item.wire+"</td><td>"+item.supportingArm+"</td><td>"+item.screw+"</td><td>"+item.createTime+"</td></tr>"
+				var row = "<tr><td style='width: 100px;'>"+item.lampWick+"</td>" +
+						"<td style='width: 100px;'>"+item.lampshade+"</td>" +
+						"<td style='width: 100px;'>"+item.wire+"</td>" +
+						"<td style='width: 150px;'>"+item.supportingArm+"</td>" +
+						"<td style='width: 100px;'>"+item.screw+"</td>" +
+						"<td>"+timeFormat(item.createTime)+"</td></tr>"
 				content += row;
 			});
 			lampBody.html(content);
@@ -52,7 +63,9 @@ function queryLamp(){
 	});
 }
 
-function queryMaterial(){
+function queryMaterial(obj){
+	//切换菜单
+	switchMenu(obj);
 	var material = $("#material");
 	var materialBody = $("#material-tbody");
 	switchDisplay(material);
@@ -69,7 +82,7 @@ function queryMaterial(){
 						"<td>"+item.factory+"</td>" +
 						"<td>"+item.price+"</td>" +
 						"<td>"+item.unitOfMeasurement+"</td>" +
-						"<td>"+item.createdTime+"</td></tr>"
+						"<td>"+timeFormat(item.createdTime)+"</td></tr>"
 				content += row;
 			});
 			materialBody.html(content);
@@ -77,7 +90,9 @@ function queryMaterial(){
 	});
 }
 
-function queryCompany(){
+function queryCompany(obj){
+	//切换菜单
+	switchMenu(obj);
 	var company = $("#company");
 	switchDisplay(company);
 	var companyBody = $("#company-tbody");
@@ -93,11 +108,49 @@ function queryCompany(){
 						"<td>"+item.companyUnicode+"</td>" +
 						"<td>"+item.companyName+"</td>" +
 						"<td>"+item.address+"</td>" +
-						"<td>"+item.createdTime+"</td>" +
-						"<td>"+item.modifiedTime+"</td></tr>"
+						"<td>"+timeFormat(item.createdTime)+"</td>" +
+						"<td>"+dateFormat(item.modifiedTime)+"</td></tr>"
 				content += row;
 			});
 			companyBody.html(content);
 		}
 	});
+}
+
+/**
+ * 转换时间
+ * @param time 毫秒数
+ * @returns yyyy-MM-dd hh:mm:ss
+ */
+function timeFormat(time){
+	var dateee = new Date(time);
+	var date = new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '');
+	return date;
+}
+
+/**
+ * 转换日期
+ * @param time 时间戳
+ * @returns yyyy-MM-dd
+ */
+function dateFormat(time) {
+	var date = new Date(time);
+	var y = date.getFullYear();
+	var m = date.getMonth() + 1;
+	var d = date.getDate();
+	var H = date.getHours();
+	var M = date.getMinutes();
+	var S = date.getSeconds();
+	function Covering(num) {
+		return num > 10 ? num : '0' + num;
+	}
+	return y + '-' + Covering(m) + '-' + Covering(d);// + ' ' + Covering(H) + ':'+ Covering(M) + ':' + Covering(S)
+}
+
+function switchMenu(obj){
+	var className = obj.className;
+	var id = obj.id;
+	$("."+className).css('color', 'black');
+	$("#"+id).css('color', '#fff');
+	$(".search").val("");
 }

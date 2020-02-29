@@ -22,10 +22,9 @@
 	}
 </style>
 </head>
-<body style="background: gray;">
-	<h1 align="center" style="margin-top: 190px; color: aqua;">Welcome!欢迎来到路灯管理系统</h1>
-	<div align="center"
-		style="width: 100%; height: 350px;">
+<body style="background-image: url(./img/welcome-background.jpg);">
+	<h1 align="center" style="margin-top: 10%; color: #1a5454;">Welcome!欢迎来到路灯管理系统</h1>
+	<div align="center" style="width: 100%; height: 250px;">
 		<form action="/lampPm/LoginServlet" method="post">
 			<table>
 				<tr align="center">

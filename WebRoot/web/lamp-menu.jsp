@@ -44,75 +44,51 @@
 </style>
 <title>路灯管理系统</title>
 </head>
-<body style="background-color: white;">
-	<h1 align="center" style="background-color: red;">欢迎登录路灯管理系统</h1>
-	<div align="center"
-		style="width: 100%; height: 580px; background-color: lime;">
-		<div style="width: 80%; height: 50px; background-color: yellow;">
+<body style="background-image: url(./img/welcome-background.jpg);">
+	<h1 align="center" style="margin-top: 18px; margin-bottom: 5px;">欢迎登录路灯管理系统</h1>
+	<div align="center"	style="width: 100%; height: 580px;">
+		<div style="width: 80%; height: 50px;">
 			<ul class="menu-bar">
-				<li class="menu-name" onclick="queryRoads()">道路信息</li>
-				<li class="menu-name" onclick="queryLamp()">路灯信息</li>
-				<li class="menu-name" onclick="queryMaterial()">材料信息</li>
-				<li class="menu-name" onclick="queryCompany()">公司信息</li>
+				<li class="menu-name" onclick="queryRoads(this)" id="id-query-roads">道路信息</li>
+				<li class="menu-name" onclick="queryLamp(this)" id="id-query-lamp">路灯信息</li>
+				<li class="menu-name" onclick="queryMaterial(this)" id="id-query-material">材料信息</li>
+				<li class="menu-name" onclick="queryCompany(this)" id="id-query-company">公司信息</li>
 			</ul>
 		</div>
 		<div id="roads">
-			<div style="display: none;">
-				<button onclick="newRoads()">新建路段项目</button>
-				<div style="border: 1px solid; width: 60%;">
-					<form id="newRoads">
-						<table border="1">
-							<tr>
-								<td>道路名</td>
-								<td><input type="text" name="roadName" size="20" /></td>
-							</tr>
-							<tr>
-								<td>道路长度</td>
-								<td><input type="text" name="roadName" size="20" /></td>
-							</tr>
-							<tr>
-								<td>所属区域</td>
-								<td><input type="text" name="roadName" size="20" /></td>
-							</tr>
-							<tr>
-								<td>需要路灯数量</td>
-								<td><input type="text" name="roadName" size="20" /></td>
-							</tr>
-							<tr>
-								<td>开工状态</td>
-								<td><input type="text" name="roadName" size="20" /></td>
-							</tr>
-							<tr>
-								<td rowspan="2"><input type="button" value="保存"
-									name="roadName" size="20" /></td>
-							</tr>
-						</table>
-					</form>
-				</div>
+			<div style="padding: 10px; padding-left: 90px;" align="left">
+				<span>路段名称</span>
+				<input type="text" class="search" id="road-name-search-input" placeholder="请输入路段名称"/>
+				<input type="button" id="road-name-search" onclick="roadNameSearch()" value="搜索"/>
 			</div>
-			<div>
-				<table border="1" cellspacing="0" cellpadding="0" id="roads-tbale" class="data-table">
-					<thead align="center">
-						<tr>
-							<td>序号</td>
-							<td>路名</td>
-							<td>长度</td>
-							<td>所属区域</td>
-							<td>所需路灯数量</td>
-							<td>开工状态</td>
-						</tr>
-					</thead>
-					<tbody id="roads-tbody" align="center"></tbody>
-				</table>
-			</div>
+			<table border="1" cellspacing="0" cellpadding="0" id="roads-tbale" class="data-table">
+				<thead align="center">
+					<tr>
+						<td>序号</td>
+						<td>路段</td>
+						<td>所属区域</td>
+						<td>长度</td>
+						<td>所需路灯数量</td>
+						<td>安装公司</td>
+						<td>创建时间</td>
+						<td>修改时间</td>
+					</tr>
+				</thead>
+				<tbody id="roads-tbody" align="center"></tbody>
+			</table>
 		</div>
 		<div id="lamp">
+			<div style="padding: 10px; padding-left: 90px;" align="left">
+				<span>路段名称</span>
+				<input type="text" class="search" id="lamp-name-search-input" placeholder="请输入路段名称"/>
+				<input type="button" id="lamp-name-search" onclick="lampNameSearch()" value="搜索"/>
+			</div>
 			<table border="1" cellspacing="0" cellpadding="0" id="lamp-tbale" class="data-table">
 				<thead align="center">
 					<tr>
 						<td>灯罩</td>
 						<td>灯柱</td>
-						<td>灯柱</td>
+						<td>线缆</td>
 						<td>支撑臂</td>
 						<td>螺钉</td>
 						<td>创建时间</td>
@@ -122,6 +98,11 @@
 			</table>
 		</div>
 		<div id="material">
+			<div style="padding: 10px; padding-left: 90px;" align="left">
+				<span>路段名称</span>
+				<input type="text" class="search" id="material-name-search-input" placeholder="请输入路段名称"/>
+				<input type="button" id="material-name-search" onclick="materialNameSearch()" value="搜索"/>
+			</div>
 			<table border="1" cellspacing="0" cellpadding="0" id="material-tbale" class="data-table">
 				<thead align="center">
 					<tr>
@@ -137,6 +118,11 @@
 			</table>
 		</div>
 		<div id="company">
+			<div style="padding: 10px; padding-left: 90px;" align="left">
+				<span>路段名称</span>
+				<input type="text" class="search" id="company-name-search-input" placeholder="请输入路段名称"/>
+				<input type="button" id="company-name-search" onclick="companyNameSearch()" value="搜索"/>
+			</div>
 			<table border="1" cellspacing="0" cellpadding="0" id="company-tbale"
 				class="data-table">
 				<thead align="center">
