@@ -1,27 +1,23 @@
 function roadNameSearch(){
 	var searchInput = $('#road-name-search-input').val();
-	if(searchInput.length == 0){
-		alert("请输入搜索内容");
-		return;
-	}
 	var roadsBody = $("#roads-tbody");
 	$.ajax({
-		url : "/lampPm/queryRoads",// http://localhost:8080
+		url : "/lampPm/queryRoadWithRoadSection",// http://localhost:8080
 		type : "get",
-		data : {searchInput},
+		data : {"roadSection":searchInput},
 		dataType : "json",
 		success : function(data) {
 			var content = "";
 			$.each(data, function(i){
 				var item = data[i];
-				var row = "<tr><td>"+(i+1)+"</td>" +
-						"<td style='width: 100px;'>"+item.name+"</td>" +
-						"<td style='width: 100px;'>"+item.legth+"</td>" +
-						"<td style='width: 100px;'>"+item.area+"</td>" +
-						"<td style='width: 100px;'>"+item.lampNum+"</td>" +
-						"<td style='width: 100px;'>"+item.status+"</td>"+
-						"<td style='width: 100px;'>未"+searchInput+"知</td>"+
-						"<td style='width: 100px;'>未知</td></tr>"
+				var row = "<tr class = 'data-tbody'><td>"+(i+1)+"</td>" +
+				"<td style='width: 100px;'>"+item.roadSection+"</td>" +
+				"<td style='width: 100px;'>"+item.area+"</td>" +
+				"<td style='width: 100px;'>"+item.length+"</td>" +
+				"<td style='width: 100px;'>"+item.needLightNumber+"</td>" +
+				"<td>"+item.installCompany+"</td>" +
+				"<td style='width: 100px;'>"+dateFormat(item.createdTime)+"</td>" +
+				"<td style='width: 100px;'>"+dateFormat(item.modifiedTime)+"</td></tr>";
 				content += row;
 			});
 			roadsBody.html(content);
@@ -31,28 +27,23 @@ function roadNameSearch(){
 
 function lampNameSearch(){
 	var searchInput = $('#lamp-name-search-input').val();
-	if(searchInput.length == 0){
-		alert("请输入搜索内容");
-		return;
-	}
 	var roadsBody = $("#lamp-tbody");
 	$.ajax({
-		url : "/lampPm/queryRoads",// http://localhost:8080
+		url : "/lampPm/queryStreetlightWithLampWick",// http://localhost:8080
 		type : "get",
-		data : {searchInput},
+		data : {"lampWick":searchInput},
 		dataType : "json",
 		success : function(data) {
 			var content = "";
 			$.each(data, function(i){
 				var item = data[i];
-				var row = "<tr><td>"+(i+1)+"</td>" +
-				"<td style='width: 100px;'>"+item.name+"</td>" +
-				"<td style='width: 100px;'>"+item.legth+"</td>" +
-				"<td style='width: 100px;'>"+item.area+"</td>" +
-				"<td style='width: 100px;'>"+item.lampNum+"</td>" +
-				"<td style='width: 100px;'>"+item.status+"</td>"+
-				"<td style='width: 100px;'>未"+searchInput+"知</td>"+
-				"<td style='width: 100px;'>未知</td></tr>"
+				var row = "<tr class = 'data-tbody'><td style='width: 100px;'>"+item.lampWick+"</td>" +
+				"<td style='width: 100px;'>"+item.lampshade+"</td>" +
+				"<td style='width: 100px;'>"+item.wire+"</td>" +
+				"<td style='width: 150px;'>"+item.supportingArm+"</td>" +
+				"<td style='width: 100px;'>"+item.screw+"</td>" +
+				"<td style='width: 100px;'>"+dateFormat(item.createdTime)+"</td>" +
+				"<td style='width: 100px;'>"+dateFormat(item.modifiedTime)+"</td></tr>";
 				content += row;
 			});
 			roadsBody.html(content);
@@ -64,28 +55,23 @@ function lampNameSearch(){
 
 function materialNameSearch(){
 	var searchInput = $('#material-name-search-input').val();
-	if(searchInput.length == 0){
-		alert("请输入搜索内容");
-		return;
-	}
 	var roadsBody = $("#material-tbody");
 	$.ajax({
-		url : "/lampPm/queryRoads",// http://localhost:8080
+		url : "/lampPm/queryMaterialWithMaterialNumber",// http://localhost:8080
 		type : "get",
-		data : {searchInput},
+		data : {"materialNumber": searchInput},
 		dataType : "json",
 		success : function(data) {
 			var content = "";
 			$.each(data, function(i){
 				var item = data[i];
-				var row = "<tr><td>"+(i+1)+"</td>" +
+				var row = "<tr class = 'data-tbody'><td>"+item.materialNumber+"</td>" +
 				"<td style='width: 100px;'>"+item.name+"</td>" +
-				"<td style='width: 100px;'>"+item.legth+"</td>" +
-				"<td style='width: 100px;'>"+item.area+"</td>" +
-				"<td style='width: 100px;'>"+item.lampNum+"</td>" +
-				"<td style='width: 100px;'>"+item.status+"</td>"+
-				"<td style='width: 100px;'>未"+searchInput+"知</td>"+
-				"<td style='width: 100px;'>未知</td></tr>"
+				"<td>"+item.factory+"</td>" +
+				"<td style='width: 80px;'>"+item.price+"</td>" +
+				"<td style='width: 80px;'>"+item.unitOfMeasurement+"</td>" +
+				"<td style='width: 120px;'>"+dateFormat(item.createdTime)+"</td>"+
+				"<td style='width: 120px;'>"+dateFormat(item.modifiedTime)+"</td></tr>";
 				content += row;
 			});
 			roadsBody.html(content);
@@ -95,28 +81,22 @@ function materialNameSearch(){
 
 function companyNameSearch(){
 	var searchInput = $('#company-name-search-input').val();
-	if(searchInput.length == 0){
-		alert("请输入搜索内容");
-		return;
-	}
 	var roadsBody = $("#company-tbody");
 	$.ajax({
-		url : "/lampPm/queryRoads",// http://localhost:8080
+		url : "/lampPm/queryCompanyWithCompanyUnicode",// http://localhost:8080
 		type : "get",
-		data : {searchInput},
+		data : {'companyUnicode':searchInput},
 		dataType : "json",
 		success : function(data) {
 			var content = "";
 			$.each(data, function(i){
 				var item = data[i];
-				var row = "<tr><td>"+(i+1)+"</td>" +
-				"<td style='width: 100px;'>"+item.name+"</td>" +
-				"<td style='width: 100px;'>"+item.legth+"</td>" +
-				"<td style='width: 100px;'>"+item.area+"</td>" +
-				"<td style='width: 100px;'>"+item.lampNum+"</td>" +
-				"<td style='width: 100px;'>"+item.status+"</td>"+
-				"<td style='width: 100px;'>未"+searchInput+"知</td>"+
-				"<td style='width: 100px;'>未知</td></tr>"
+				var row = "<tr class = 'data-tbody'><td>"+item.id+"</td>" +
+				"<td style='width: 100px;'>"+item.companyUnicode+"</td>" +
+				"<td>"+item.companyName+"</td>" +
+				"<td>"+item.address+"</td>" +
+				"<td style='width: 100px;'>"+dateFormat(item.createdTime)+"</td>" +
+				"<td style='width: 100px;'>"+dateFormat(item.modifiedTime)+"</td></tr>";
 				content += row;
 			});
 			roadsBody.html(content);
@@ -127,11 +107,41 @@ function companyNameSearch(){
 function lampNameAdd(){
 	$("#lamp-form").css('display', 'block');
 	$("#lamp-tbale").css('display', 'none');
+	$("#wick").val("");
+	$("#shape").val("");
+	$("#wire").val("");
+	$("#support-arm").val("");
+	$("#screw").val("");
 }
 
 function saveLamp(){
 	$("#lamp-tbale").css('display', 'inline-block');
 	$("#lamp-form").css('display', 'none');
+	var wick = $("#wick").val();//灯罩
+	var shape = $("#shape").val();//灯柱
+	var wire = $("#wire").val();//线缆
+	var supportArm = $("#support-arm").val();//支撑臂
+	var screw = $("#screw").val();//螺钉
+	$.ajax({
+		url : "/lampPm/saveLamp",// http://localhost:8080
+		type : "get",
+		data : {
+			'wick':wick,
+			'shape':shape,
+			'wire':wire,
+			'supportArm':supportArm,
+			'screw':screw
+			},
+		dataType : "text",
+		success : function(data) {
+			if(data > 0){
+				alert("保存成功！");
+				lampNameSearch();
+			}else{
+				alert("保存失败！");
+			}
+		}
+	});
 }
 
 function backLamp(){

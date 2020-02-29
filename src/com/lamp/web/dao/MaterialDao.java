@@ -13,12 +13,13 @@ import com.lamp.web.jdbc.JdbcConnector;
 
 public class MaterialDao {
 	private static Connection connection;
-	public static List<Material> queryMaterial(){
-		connection=JdbcConnector.getConnection();
-		String sql="select * from material_info";
+
+	public static List<Material> queryMaterial() {
+		connection = JdbcConnector.getConnection();
+		String sql = "select * from material_info";
 		List<Material> list = new ArrayList<Material>();
 		try {
-			PreparedStatement ps=connection.prepareStatement(sql);
+			PreparedStatement ps = connection.prepareStatement(sql);
 			ResultSet resultSet = ps.executeQuery(sql);
 			while (resultSet.next()) {
 				int id = resultSet.getInt("id");
@@ -41,22 +42,28 @@ public class MaterialDao {
 				list.add(material);
 			}
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
-		} 
+		}
 		return list;
 	}
-	//根据materialNumber材料编号查询相关信息
-	public static List<Material> queryMaterialWithMaterialNumber(String materialNumber){
-		connection=JdbcConnector.getConnection();
-		String sql="select * from material_info where material_number=?";
+
+	// 根据materialNumber材料编号查询相关信息
+	public static List<Material> queryMaterialWithMaterialNumber(String materialNumber) {
+		connection = JdbcConnector.getConnection();
+		String sql = "select * from material_info where 1 = 1";
 		List<Material> list = new ArrayList<Material>();
 		try {
-			PreparedStatement ps=connection.prepareStatement(sql);
-			ps.setString(2, materialNumber);
-			ResultSet resultSet = ps.executeQuery(sql);
+			PreparedStatement ps = null;
+			if(materialNumber.length() != 0) {
+				sql += " and material_number = ?";
+				ps = connection.prepareStatement(sql);
+				ps.setString(1, materialNumber);
+			}else {
+				ps = connection.prepareStatement(sql);
+			}
+			ResultSet resultSet = ps.executeQuery();
 			while (resultSet.next()) {
-		
 				Material material = new Material();
 				material.setId(resultSet.getInt("id"));
 				material.setMaterialNumber(resultSet.getString("material_number"));
@@ -69,14 +76,15 @@ public class MaterialDao {
 				list.add(material);
 			}
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
-		} 
+		}
 		return list;
 	}
+
 	public static void main(String[] args) {
 		List<Material> queryMaterial = queryMaterial();
-		System.out.println(queryMaterial.size()+"-----");
+		System.out.println(queryMaterial.size() + "-----");
 	}
 
 }

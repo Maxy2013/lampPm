@@ -44,7 +44,7 @@
 	border: 1px solid blue;
 }
 input{
-	font-size: 20px;
+	font-size: 16px;
 }
 #lamp-form table{
 	border: 0px;

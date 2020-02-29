@@ -44,12 +44,19 @@ public class CompanyDao {
 	//根据companyUnicode公司编码查询相关信息
 	public static List<Company> queryCompanyWithCompanyUnicode(String companyUnicode) {
 		connection = JdbcConnector.getConnection();
-		String sql = "select * from company_info where company_unicode=?";
+		String sql = "select * from company_info where 1 = 1";
 		List<Company> list = new ArrayList<Company>();
 		try {
-			PreparedStatement ps = connection.prepareStatement(sql);
-			ps.setString(2, companyUnicode);
-			ResultSet resultSet = ps.executeQuery(sql);
+			PreparedStatement ps = null;
+			if(companyUnicode.length() != 0) {
+				sql += " and company_unicode = ?";
+				ps = connection.prepareStatement(sql);
+				ps.setString(1, companyUnicode);
+			}else {
+				ps = connection.prepareStatement(sql);
+			}
+			
+			ResultSet resultSet = ps.executeQuery();
 			while (resultSet.next()) {
 				Company company=new Company();
 				company.setId(resultSet.getInt("id"));
@@ -60,7 +67,6 @@ public class CompanyDao {
 				company.setModifiedTime(resultSet.getDate("modified_time"));
 				list.add(company);
 			}
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

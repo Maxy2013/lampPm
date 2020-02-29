@@ -23,7 +23,7 @@ public class QueryStreetlightWithLampWickServlet extends HttpServlet{
 	}
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<Streetlight> dataList = StreetLightDao.queryStreetLightWithLampWick(req.getParameter("LampWick"));
+		List<Streetlight> dataList = StreetLightDao.queryStreetLightWithLampWick(req.getParameter("lampWick"));
 		
 		
 		resp.setCharacterEncoding("UTF-8");

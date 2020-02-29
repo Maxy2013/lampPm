@@ -18,11 +18,11 @@ import com.lamp.web.entity.Material;
 public class QueryMaterialWithMaterialNumberServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<Material> dataList = MaterialDao.queryMaterialWithMaterialNumber(req.getParameter("MaterialNumber"));
+		List<Material> dataList = MaterialDao.queryMaterialWithMaterialNumber(req.getParameter("materialNumber"));
 		
 		
 		resp.setCharacterEncoding("UTF-8");
-		resp.setContentType("test/json;charset=UTF-8");
+		resp.setContentType("text/json;charset=UTF-8");
 		
 		String jsonString = JSON.toJSONString(dataList);
 		PrintWriter out = resp.getWriter();

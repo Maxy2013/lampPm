@@ -14,19 +14,19 @@ public class StreetLightDao {
 
 	public static void main(String[] args) {
 		List<Streetlight> queryStreetLight = queryStreetLight();
-		System.out.println(queryStreetLight.size()+"-----");
+		System.out.println(queryStreetLight.size() + "-----");
 	}
-	
-	//查询路灯相关信息
-	public static List<Streetlight> queryStreetLight(){
+
+	// 查询路灯相关信息
+	public static List<Streetlight> queryStreetLight() {
 		Connection connection = JdbcConnector.getConnection();
-	    String sql="select * from streetlight_info";
-	   
-	    List<Streetlight> list = new ArrayList<Streetlight>();
-	    try {
+		String sql = "select * from streetlight_info";
+
+		List<Streetlight> list = new ArrayList<Streetlight>();
+		try {
 			PreparedStatement prepareStatement = connection.prepareStatement(sql);
 			ResultSet resultSet = prepareStatement.executeQuery(sql);
-			while(resultSet.next()) {
+			while (resultSet.next()) {
 				Streetlight streetlight = new Streetlight();
 				streetlight.setId(resultSet.getInt("id"));
 				streetlight.setLampshade(resultSet.getString("lampshade"));
@@ -38,25 +38,34 @@ public class StreetLightDao {
 				streetlight.setModifiedTime(resultSet.getDate("modified_time"));
 				list.add(streetlight);
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return list;
 	}
-	//根据lampwick灯罩查询相关信息
-	public static List<Streetlight> queryStreetLightWithLampWick(String lampWick){
+
+	// 根据lampwick灯罩查询相关信息
+	public static List<Streetlight> queryStreetLightWithLampWick(String lampWick) {
 		Connection connection = JdbcConnector.getConnection();
-	    String sql="select * from streetlight_info where lamp_wick=?";
-	    Streetlight streetlight = new Streetlight();
-	    List<Streetlight> list = new ArrayList<Streetlight>();
-	    try {
-			PreparedStatement prepareStatement = connection.prepareStatement(sql);
-			prepareStatement.setString(2, lampWick);
-			ResultSet resultSet = prepareStatement.executeQuery(sql);
-			while(resultSet.next()) {
+		String sql = "select * from streetlight_info where 1 = 1";
+		
+		List<Streetlight> list = new ArrayList<Streetlight>();
+		try {
+			PreparedStatement prepareStatement = null;
+			if (lampWick.length() != 0) {
+				sql += " and lamp_wick = ?";
+				prepareStatement = connection.prepareStatement(sql);
+				prepareStatement.setString(1, lampWick);
+			} else {
+				prepareStatement = connection.prepareStatement(sql);
+			}
+
+			ResultSet resultSet = prepareStatement.executeQuery();
+			while (resultSet.next()) {
+				Streetlight streetlight = new Streetlight();
 				streetlight.setId(resultSet.getInt("id"));
-				streetlight.setLampshade(resultSet.getString("lamp_shade"));
+				streetlight.setLampshade(resultSet.getString("lampshade"));
 				streetlight.setLampWick(resultSet.getString("lamp_wick"));
 				streetlight.setScrew(resultSet.getString("screw"));
 				streetlight.setSupportingArm(resultSet.getString("supporting_arm"));
@@ -65,19 +74,20 @@ public class StreetLightDao {
 				streetlight.setModifiedTime(resultSet.getDate("modified_time"));
 				list.add(streetlight);
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return list;
 	}
-	//新增路灯信息
-	public static int insertStreetLight(Streetlight streetlight){
+
+	// 新增路灯信息
+	public static int insertStreetLight(Streetlight streetlight) {
 		Connection connection = JdbcConnector.getConnection();
-	    String sql="insert into streetlight_info(id,lamp_wick,lamp_shade,wire,supporting_arm,screw,created_time,modified_time)"
-	    		+ " values(?,?,?,?,?,?,now(),now())";
-	  
-	    try {
+		String sql = "insert into streetlight_info(id,lamp_wick,lampshade,wire,supporting_arm,screw,created_time,modified_time)"
+				+ " values(?,?,?,?,?,?,now(),now())";
+
+		try {
 			PreparedStatement prepareStatement = connection.prepareStatement(sql);
 			prepareStatement.setInt(1, (int) System.currentTimeMillis());
 			prepareStatement.setString(2, streetlight.getLampWick());
@@ -87,12 +97,11 @@ public class StreetLightDao {
 			prepareStatement.setString(6, streetlight.getScrew());
 			int update = prepareStatement.executeUpdate();
 			return update;
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return 0;
 	}
-
 
 }

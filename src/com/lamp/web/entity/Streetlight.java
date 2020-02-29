@@ -11,6 +11,19 @@ public class Streetlight {
 	private String screw;//螺钉
 	private Date createdTime;//创建时间
 	private Date modifiedTime;//修改时间
+	
+	public Streetlight() {
+		
+	}
+	
+	
+	public Streetlight(String lampWick, String lampshade, String wire, String supportingArm, String screw) {
+		this.lampWick = lampWick;
+		this.lampshade = lampshade;
+		this.wire = wire;
+		this.supportingArm = supportingArm;
+		this.screw = screw;
+	}
 	public Integer getId() {
 		return id;
 	}

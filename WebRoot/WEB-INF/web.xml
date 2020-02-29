@@ -127,4 +127,15 @@
   	<servlet-name>QueryStreetlightWithLampWickServlet</servlet-name>
   	<url-pattern>/queryStreetlightWithLampWick</url-pattern>
   </servlet-mapping>
+  
+   <servlet>
+  	<description>SaveLampServlet</description>
+  	<display-name>SaveLampServlet</display-name>
+  	<servlet-name>SaveLampServlet</servlet-name>
+  	<servlet-class>com.lamp.web.servlet.SaveLampServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SaveLampServlet</servlet-name>
+  	<url-pattern>/saveLamp</url-pattern>
+  </servlet-mapping>
 </web-app>

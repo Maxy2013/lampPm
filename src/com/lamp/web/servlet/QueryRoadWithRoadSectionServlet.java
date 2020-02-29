@@ -18,11 +18,11 @@ import com.lamp.web.entity.Road;
 public class QueryRoadWithRoadSectionServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	List<Road> dataList = RoadDao.queryRoadWithRoadSection(req.getParameter("RoadSection"));
+	List<Road> dataList = RoadDao.queryRoadWithRoadSection(req.getParameter("roadSection"));
 		
 		
 		resp.setCharacterEncoding("UTF-8");
-		resp.setContentType("test/json;charset=UTF-8");
+		resp.setContentType("text/json;charset=UTF-8");
 		
 		String jsonString = JSON.toJSONString(dataList);
 		PrintWriter out = resp.getWriter();

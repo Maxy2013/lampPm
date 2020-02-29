@@ -23,7 +23,7 @@ function queryRoads(obj){
 						"<td style='width: 100px;'>"+item.needLightNumber+"</td>" +
 						"<td>"+item.installCompany+"</td>"+
 						"<td style='width: 100px;'>"+dateFormat(item.createdTime)+"</td>"+
-						"<td style='width: 100px;'>"+dateFormat(item.modifiedTime)+"</td></tr>"
+						"<td style='width: 100px;'>"+dateFormat(item.modifiedTime)+"</td></tr>";
 				content += row;
 			});
 			roadsBody.html(content);
@@ -56,7 +56,7 @@ function queryLamp(obj){
 						"<td style='width: 150px;'>"+item.supportingArm+"</td>" +
 						"<td style='width: 100px;'>"+item.screw+"</td>" +
 						"<td style='width: 100px;'>"+dateFormat(item.createdTime)+"</td>" +
-						"<td style='width: 100px;'>"+dateFormat(item.modifiedTime)+"</td></tr>"
+						"<td style='width: 100px;'>"+dateFormat(item.modifiedTime)+"</td></tr>";
 				content += row;
 			});
 			lampBody.html(content);
@@ -84,7 +84,7 @@ function queryMaterial(obj){
 						"<td style='width: 80px;'>"+item.price+"</td>" +
 						"<td style='width: 80px;'>"+item.unitOfMeasurement+"</td>" +
 						"<td style='width: 120px;'>"+dateFormat(item.createdTime)+"</td>"+
-						"<td style='width: 120px;'>"+dateFormat(item.modifiedTime)+"</td></tr>"
+						"<td style='width: 120px;'>"+dateFormat(item.modifiedTime)+"</td></tr>";
 				content += row;
 			});
 			materialBody.html(content);
@@ -111,7 +111,7 @@ function queryCompany(obj){
 						"<td>"+item.companyName+"</td>" +
 						"<td>"+item.address+"</td>" +
 						"<td style='width: 100px;'>"+dateFormat(item.createdTime)+"</td>" +
-						"<td style='width: 100px;'>"+dateFormat(item.modifiedTime)+"</td></tr>"
+						"<td style='width: 100px;'>"+dateFormat(item.modifiedTime)+"</td></tr>";
 				content += row;
 			});
 			companyBody.html(content);
