@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 public class JdbcConnector {
-	private static final String URL="jdbc:mysql://localhost:3306/book_management";
+	private static final String URL="jdbc:mysql://192.168.1.3:3306/lamp_pm?characterEncoding=utf-8";
 	private static final String USER="root";
 	private static final String PASSWORD="root";
 	private static Connection conn=null;

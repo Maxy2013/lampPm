@@ -7,13 +7,15 @@ import java.sql.SQLException;
 import com.lamp.web.entity.Company;
 import com.lamp.web.jdbc.JdbcConnector;
 
-public class CompanyDao{
+public class CompanyDao {
 	
-	private Connection connection;
-
-	public int insert(Company company) {
+	private static Connection connection;
+	public static void main(String[] args) {
+		insert(new Company());
+	}
+	public static int insert(Company company) {
 		connection = JdbcConnector.getConnection();
-		String sql = "insert into book (id, name) valus (?, ?)";
+		String sql = "insert into book (id, name) values (?, ?)";
 		try {
 			PreparedStatement ps = connection.prepareStatement(sql);
 			ps.setString(1, "132423");
