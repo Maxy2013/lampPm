@@ -44,7 +44,7 @@ public class CompanyDao {
 	//根据companyUnicode公司编码查询相关信息
 	public static List<Company> queryCompanyWithCompanyUnicode(String companyUnicode) {
 		connection = JdbcConnector.getConnection();
-		String sql = "select * from company_info";
+		String sql = "select * from company_info where company_unicode=?";
 		List<Company> list = new ArrayList<Company>();
 		try {
 			PreparedStatement ps = connection.prepareStatement(sql);

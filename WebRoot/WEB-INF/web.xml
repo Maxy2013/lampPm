@@ -84,5 +84,14 @@
   	<url-pattern>/queryCompany</url-pattern>
   </servlet-mapping>
   
-  
+  <servlet>
+  	<description>QueryCompanyWithCompanyUnicodeServlet</description>
+  	<display-name>QueryCompanyWithCompanyUnicodeServlet</display-name>
+  	<servlet-name>QueryCompanyWithCompanyUnicodeServlet</servlet-name>
+  	<servlet-class>com.lamp.web.servlet.QueryCompanyWithCompanyUnicodeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>QueryCompanyWithCompanyUnicodeServlet</servlet-name>
+  	<url-pattern>/queryCompanyWithCompanyUnicode</url-pattern>
+  </servlet-mapping>
 </web-app>
