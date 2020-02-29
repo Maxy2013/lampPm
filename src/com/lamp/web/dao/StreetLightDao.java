@@ -76,8 +76,7 @@ public class StreetLightDao {
 		Connection connection = JdbcConnector.getConnection();
 	    String sql="insert into streetlight_info(id,lamp_wick,lamp_shade,wire,supporting_arm,screw,created_time,modified_time)"
 	    		+ " values(?,?,?,?,?,?,now(),now())";
-	    
-	   
+	  
 	    try {
 			PreparedStatement prepareStatement = connection.prepareStatement(sql);
 			prepareStatement.setInt(1, (int) System.currentTimeMillis());
