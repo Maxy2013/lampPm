@@ -8,8 +8,8 @@ public class Road {
 	private String area;//所属地区
 	private Integer length;//长度
 	private Integer needLightNumber;//所需路灯数量
-	private String install_company;//安装公司
-	private Date createTime;//创建时间
+	private String installCompany;//安装公司
+	private Date createdTime;//创建时间
 	private Date modifiedTime;//修改时间
 	public Integer getId() {
 		return id;
@@ -41,17 +41,17 @@ public class Road {
 	public void setNeedLightNumber(Integer needLightNumber) {
 		this.needLightNumber = needLightNumber;
 	}
-	public String getInstall_company() {
-		return install_company;
+	public String getInstallCompany() {
+		return installCompany;
 	}
-	public void setInstall_company(String install_company) {
-		this.install_company = install_company;
+	public void setInstallCompany(String installCompany) {
+		this.installCompany = installCompany;
 	}
-	public Date getCreateTime() {
-		return createTime;
+	public Date getCreatedTime() {
+		return createdTime;
 	}
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
+	public void setCreatedTime(Date createdTime) {
+		this.createdTime = createdTime;
 	}
 	public Date getModifiedTime() {
 		return modifiedTime;
@@ -62,8 +62,8 @@ public class Road {
 	@Override
 	public String toString() {
 		return "Road [id=" + id + ", roadSection=" + roadSection + ", area=" + area + ", length=" + length
-				+ ", needLightNumber=" + needLightNumber + ", install_company=" + install_company + ", createTime="
-				+ createTime + ", modifiedTime=" + modifiedTime + "]";
+				+ ", needLightNumber=" + needLightNumber + ", installCompany=" + installCompany + ", createdTime="
+				+ createdTime + ", modifiedTime=" + modifiedTime + "]";
 	}
 	
 }

@@ -2,35 +2,43 @@ package com.lamp.web.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.lamp.web.entity.Company;
+import com.lamp.web.entity.Material;
 import com.lamp.web.jdbc.JdbcConnector;
 
 public class CompanyDao {
 	
 	private static Connection connection;
 	public static void main(String[] args) {
-		insert(new Company());
+		List<Company> queryCompany = queryCompany();
+		System.out.println(queryCompany.size()+"------");
 	}
-	public static int insert(Company company) {
+	public static List<Company> queryCompany() {
 		connection = JdbcConnector.getConnection();
-		String sql = "insert into book (id, name) values (?, ?)";
+		String sql = "select * from company_info";
+		List<Company> list = new ArrayList<Company>();
 		try {
 			PreparedStatement ps = connection.prepareStatement(sql);
-			ps.setString(1, "132423");
-			ps.setString(2, "张三丰");
-			int executeUpdate = ps.executeUpdate();
-			return executeUpdate;
+			ResultSet resultSet = ps.executeQuery(sql);
+			while (resultSet.next()) {
+				Company company=new Company();
+				company.setId(resultSet.getInt("id"));
+				company.setCompanyName(resultSet.getString("company_name"));
+				company.setCompanyUnicode(resultSet.getString("company_unicode"));
+				company.setAddress(resultSet.getString("address"));
+				company.setCreatedTime(resultSet.getDate("created_time"));
+				company.setModifiedTime(resultSet.getDate("modified_time"));
+				list.add(company);
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 		}
-		return 0;
+		return list;
 	}
 }

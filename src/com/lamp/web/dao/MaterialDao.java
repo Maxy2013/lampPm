@@ -43,14 +43,7 @@ public class MaterialDao {
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				
-				e.printStackTrace();
-			}
-		}
+		} 
 		return list;
 	}
 	public static void main(String[] args) {

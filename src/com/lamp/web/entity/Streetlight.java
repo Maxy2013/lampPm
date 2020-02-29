@@ -9,8 +9,8 @@ public class Streetlight {
 	private String wire;//线缆
 	private String supportingArm;//支撑臂
 	private String screw;//螺钉
-	private Date createTime;//创建时间
-	private Date modified;//修改时间
+	private Date createdTime;//创建时间
+	private Date modifiedTime;//修改时间
 	public Integer getId() {
 		return id;
 	}
@@ -47,23 +47,23 @@ public class Streetlight {
 	public void setScrew(String screw) {
 		this.screw = screw;
 	}
-	public Date getCreateTime() {
-		return createTime;
+	public Date getCreatedTime() {
+		return createdTime;
 	}
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
+	public void setCreatedTime(Date createdTime) {
+		this.createdTime = createdTime;
 	}
-	public Date getModified() {
-		return modified;
+	public Date getModifiedTime() {
+		return modifiedTime;
 	}
-	public void setModified(Date modified) {
-		this.modified = modified;
+	public void setModifiedTime(Date modifiedTime) {
+		this.modifiedTime = modifiedTime;
 	}
 	@Override
 	public String toString() {
 		return "Streetlight [id=" + id + ", lampWick=" + lampWick + ", lampshade=" + lampshade + ", wire=" + wire
-				+ ", supportingArm=" + supportingArm + ", screw=" + screw + ", createTime=" + createTime + ", modified="
-				+ modified + "]";
+				+ ", supportingArm=" + supportingArm + ", screw=" + screw + ", createdTime=" + createdTime + ", modifiedTime="
+				+ modifiedTime + "]";
 	}
 	
 }

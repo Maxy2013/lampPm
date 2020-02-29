@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSON;
+import com.lamp.web.dao.CompanyDao;
 import com.lamp.web.entity.Company;
 
 
@@ -20,25 +21,9 @@ public class QueryCompanyServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		Company company = new Company();
-		company.setId(1009911);
-		company.setCompanyUnicode("HD-990AA9100P");
-		company.setCompanyName("兴旺灯具制造有限公司");
-		company.setAddress("长江路");
-		company.setCreatedTime(new Date());
-		company.setModifiedTime(new Date());
 		
-		Company company1 = new Company();
-		company1.setId(1009911);
-		company1.setCompanyUnicode("HD-990AA9100P");
-		company1.setCompanyName("兴旺灯具制造有限公司");
-		company1.setAddress("长江路");
-		company1.setCreatedTime(new Date());
-		company1.setModifiedTime(new Date());
+		List<Company> dataList = CompanyDao.queryCompany();
 		
-		List<Company> dataList = new ArrayList<>();
-		dataList.add(company);
-		dataList.add(company1);
 		
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("test/json;charset=UTF-8");
