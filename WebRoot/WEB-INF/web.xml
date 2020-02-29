@@ -44,14 +44,44 @@
   </servlet-mapping>
   
   <servlet>
-  	<description>RoadsServlet</description>
-  	<display-name>RoadsServlet</display-name>
-  	<servlet-name>RoadsServlet</servlet-name>
-  	<servlet-class>com.lamp.web.servlet.RoadsServlet</servlet-class>
+  	<description>QueryRoadsServlet</description>
+  	<display-name>QueryRoadsServlet</display-name>
+  	<servlet-name>QueryRoadsServlet</servlet-name>
+  	<servlet-class>com.lamp.web.servlet.QueryRoadsServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>RoadsServlet</servlet-name>
+  	<servlet-name>QueryRoadsServlet</servlet-name>
   	<url-pattern>/queryRoads</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<description>QueryLampServlet</description>
+  	<display-name>QueryLampServlet</display-name>
+  	<servlet-name>QueryLampServlet</servlet-name>
+  	<servlet-class>com.lamp.web.servlet.QueryLampServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>QueryLampServlet</servlet-name>
+  	<url-pattern>/queryLamp</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<description>QueryMaterialServlet</description>
+  	<display-name>QueryMaterialServlet</display-name>
+  	<servlet-name>QueryMaterialServlet</servlet-name>
+  	<servlet-class>com.lamp.web.servlet.QueryMaterialServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>QueryMaterialServlet</servlet-name>
+  	<url-pattern>/queryMaterial</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<description>QueryCompanyServlet</description>
+  	<display-name>QueryCompanyServlet</display-name>
+  	<servlet-name>QueryCompanyServlet</servlet-name>
+  	<servlet-class>com.lamp.web.servlet.QueryCompanyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>QueryCompanyServlet</servlet-name>
+  	<url-pattern>/queryCompany</url-pattern>
   </servlet-mapping>
   
   
