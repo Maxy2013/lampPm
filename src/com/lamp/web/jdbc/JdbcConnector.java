@@ -13,7 +13,7 @@ public class JdbcConnector {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		//加载驱动
 		Class.forName("com.mysql.jdbc.Driver");
-		//获取数据库连接
+		//获取数据库连接Class.forName("com.mysql.jdbc.Driver");
 	    try {
 			conn = DriverManager.getConnection(URL,USER,PASSWORD);
 		} catch (SQLException e) {
