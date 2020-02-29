@@ -46,6 +46,34 @@ public class MaterialDao {
 		} 
 		return list;
 	}
+	//根据materialNumber材料编号查询相关信息
+	public static List<Material> queryMaterialWithMaterialNumber(String materialNumber){
+		connection=JdbcConnector.getConnection();
+		String sql="select * from material_info where material_number=?";
+		List<Material> list = new ArrayList<Material>();
+		try {
+			PreparedStatement ps=connection.prepareStatement(sql);
+			ps.setString(2, materialNumber);
+			ResultSet resultSet = ps.executeQuery(sql);
+			while (resultSet.next()) {
+		
+				Material material = new Material();
+				material.setId(resultSet.getInt("id"));
+				material.setMaterialNumber(resultSet.getString("material_number"));
+				material.setName(resultSet.getString("name"));
+				material.setFactory(resultSet.getString("factory"));
+				material.setPrice(resultSet.getDouble("price"));
+				material.setUnitOfMeasurement(resultSet.getString("unit_of_measurement"));
+				material.setCreatedTime(resultSet.getDate("created_time"));
+				material.setModifiedTime(resultSet.getDate("modified_time"));
+				list.add(material);
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} 
+		return list;
+	}
 	public static void main(String[] args) {
 		List<Material> queryMaterial = queryMaterial();
 		System.out.println(queryMaterial.size()+"-----");
