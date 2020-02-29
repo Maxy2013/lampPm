@@ -94,4 +94,37 @@
   	<servlet-name>QueryCompanyWithCompanyUnicodeServlet</servlet-name>
   	<url-pattern>/queryCompanyWithCompanyUnicode</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<description>QueryMaterialWithMaterialNumberServlet</description>
+  	<display-name>QueryMaterialWithMaterialNumberServlet</display-name>
+  	<servlet-name>QueryMaterialWithMaterialNumberServlet</servlet-name>
+  	<servlet-class>com.lamp.web.servlet.QueryMaterialWithMaterialNumberServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>QueryMaterialWithMaterialNumberServlet</servlet-name>
+  	<url-pattern>/queryMaterialWithMaterialNumber</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+  	<description>QueryRoadWithRoadSectionServlet</description>
+  	<display-name>QueryRoadWithRoadSectionServlet</display-name>
+  	<servlet-name>QueryRoadWithRoadSectionServlet</servlet-name>
+  	<servlet-class>com.lamp.web.servlet.QueryRoadWithRoadSectionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>QueryRoadWithRoadSectionServlet</servlet-name>
+  	<url-pattern>/queryRoadWithRoadSection</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+  	<description>QueryStreetlightWithLampWickServlet</description>
+  	<display-name>QueryStreetlightWithLampWickServlet</display-name>
+  	<servlet-name>QueryStreetlightWithLampWickServlet</servlet-name>
+  	<servlet-class>com.lamp.web.servlet.QueryStreetlightWithLampWickServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>QueryStreetlightWithLampWickServlet</servlet-name>
+  	<url-pattern>/queryStreetlightWithLampWick</url-pattern>
+  </servlet-mapping>
 </web-app>
